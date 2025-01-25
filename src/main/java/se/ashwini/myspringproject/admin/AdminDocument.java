@@ -1,4 +1,4 @@
-package se.ashwini.myspringproject;
+package se.ashwini.myspringproject.admin;
 
 public class AdminDocument {
     private String title;

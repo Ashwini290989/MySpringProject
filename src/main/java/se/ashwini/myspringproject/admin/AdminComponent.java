@@ -1,4 +1,4 @@
-package se.ashwini.myspringproject;
+package se.ashwini.myspringproject.admin;
 
 import org.springframework.stereotype.Component;
 
@@ -10,9 +10,9 @@ public class AdminComponent {
         List<AdminDocument> documents = new ArrayList<>();
 
         // Create three instances of AdminDocument
-        AdminDocument doc1 = new AdminDocument("Title 1", "Description 1");
-        AdminDocument doc2 = new AdminDocument("Title 2", "Description 2");
-        AdminDocument doc3 = new AdminDocument("Title 3", "Description 3");
+        AdminDocument doc1 = new AdminDocument("Audit Trails", "Track user activities and changes made to the system");
+        AdminDocument doc2 = new AdminDocument("Notification Settings", "Configure email and push notification preferences");
+        AdminDocument doc3 = new AdminDocument("user feedback", "Review and respond to user feedback to improve system functionality");
 
         // Add them to a list
         documents.add(doc1);

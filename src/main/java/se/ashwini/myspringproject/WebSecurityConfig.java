@@ -14,22 +14,23 @@ import static org.springframework.security.config.Customizer.withDefaults;
 @EnableWebSecurity
 public class WebSecurityConfig {
     @Bean
-
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("resource").hasAnyRole("USER", "ADMIN","MANAGER")
-                        .requestMatchers("/user").hasAnyRole("USER","MANAGER","ADMIN")
-                        .requestMatchers("/admin").hasAnyRole("MANAGER","ADMIN")
-                        .requestMatchers("/manager").hasRole("USER")
+                        .requestMatchers("/").hasAnyRole("USER", "ADMIN", "MANAGER")
+                        .requestMatchers("/user").hasAnyRole("USER", "MANAGER", "ADMIN")
+                        .requestMatchers("/admin").hasAnyRole("MANAGER", "ADMIN")
+                        .requestMatchers("/manager").hasRole("MANAGER")
+                        .requestMatchers("/register").permitAll()
+                        .requestMatchers("/registerDone").permitAll()
                         .anyRequest().authenticated()
                 )
-                .httpBasic(withDefaults());
+                .formLogin(withDefaults());
         return http.build();
     }
 
-@Bean
-      public PasswordEncoder passwordEncoder() {
+    @Bean
+    public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
 

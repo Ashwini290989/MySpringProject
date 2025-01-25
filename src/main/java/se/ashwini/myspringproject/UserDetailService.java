@@ -2,15 +2,12 @@ package se.ashwini.myspringproject;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 import se.ashwini.myspringproject.model.ApplicationUser;
 import se.ashwini.myspringproject.repository.AppUserRepository;
-
 import java.util.List;
 
 @Service
@@ -26,7 +23,8 @@ public class UserDetailService implements UserDetailsService {
         if (applicationUser == null) {
             throw new UsernameNotFoundException("User not found");
         }
-        List<GrantedAuthority>authorities = List.of(new SimpleGrantedAuthority("ROLE"+applicationUser.getRole()));
+        //ROLE_USER
+        List<GrantedAuthority>authorities = List.of(new SimpleGrantedAuthority("ROLE_" + applicationUser.getRole()));
         return new org.springframework.security.core.userdetails.User(
                 applicationUser.getUsername(),
                 applicationUser.getPassword(),

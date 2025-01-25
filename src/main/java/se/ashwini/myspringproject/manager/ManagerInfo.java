@@ -1,4 +1,4 @@
-package se.ashwini.myspringproject;
+package se.ashwini.myspringproject.manager;
 
 public class ManagerInfo {
     private String title;

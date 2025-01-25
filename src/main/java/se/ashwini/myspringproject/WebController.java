@@ -5,10 +5,23 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import se.ashwini.myspringproject.admin.AdminComponent;
+import se.ashwini.myspringproject.admin.AdminDocument;
+import se.ashwini.myspringproject.manager.ManagerComponent;
+import se.ashwini.myspringproject.manager.ManagerInfo;
+
+import java.util.List;
 
 @Controller
-
 public class WebController {
+    private final AdminComponent adminComponent;
+    private final ManagerComponent managerComponent;
+
+    public WebController(AdminComponent adminComponent, ManagerComponent managerComponent) {
+        this.adminComponent = adminComponent;
+        this.managerComponent = managerComponent;
+    }
+
     @GetMapping("/")
     public String firstpage(Model model) {
         model.addAttribute("message", "You are logged in");
@@ -26,8 +39,16 @@ public class WebController {
     }
     @GetMapping("/admin")
     public String admin(Model model) {
-        model.addAttribute("message", "ADMIN STUFF");
+        List<AdminDocument> documents = adminComponent.getDocuments();
+        model.addAttribute("documents", documents);
         return "admin";
+    }
+    @GetMapping("/manager")
+    public String manager(Model model) {
+        List<ManagerInfo> managerInfoList= managerComponent.getManagerInfo();
+        model.addAttribute( "managerInfoList", managerInfoList);
+        return "manager";
+
     }
 
 }

@@ -1,7 +1,6 @@
 package se.ashwini.myspringproject;
 
 import jakarta.annotation.PostConstruct;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 import se.ashwini.myspringproject.model.ApplicationUser;
@@ -21,27 +20,27 @@ public class DataInitializer {
     @PostConstruct
     public void AddUsers() {
         if (appUserRepository.findByUsername("ashwini") == null) {
-            ApplicationUser User = new ApplicationUser();
-            User.setUsername("ashwini");
-            User.setPassword(passwordEncoder.encode("password"));
-            User.setRole("ADMIN");
-            appUserRepository.save(User);
+            ApplicationUser user = new ApplicationUser();
+            user.setUsername("ashwini");
+            user.setPassword(passwordEncoder.encode("password"));
+            user.setRole("ADMIN");
+            appUserRepository.save(user);
         }
 
         if (appUserRepository.findByUsername("rakesh") == null) {
-            ApplicationUser User1 = new ApplicationUser();
-            User1.setUsername("rakesh");
-            User1.setPassword(passwordEncoder.encode("password1"));
-            User1.setRole("USER");
-            appUserRepository.save(User1);
+            ApplicationUser user1 = new ApplicationUser();
+            user1.setUsername("rakesh");
+            user1.setPassword(passwordEncoder.encode("password1"));
+            user1.setRole("USER");
+            appUserRepository.save(user1);
         }
 
         if (appUserRepository.findByUsername("dhairya") == null) {
-            ApplicationUser User2 = new ApplicationUser();
-            User2.setUsername("dhairya");
-            User2.setPassword(passwordEncoder.encode("password2"));
-            User2.setRole("MANAGER");
-            appUserRepository.save(User2);
+            ApplicationUser user2 = new ApplicationUser();
+            user2.setUsername("dhairya");
+            user2.setPassword(passwordEncoder.encode("password2"));
+            user2.setRole("MANAGER");
+            appUserRepository.save(user2);
 
 
         }
