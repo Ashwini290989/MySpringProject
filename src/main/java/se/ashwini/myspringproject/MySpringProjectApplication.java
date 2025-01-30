@@ -11,3 +11,5 @@ public class MySpringProjectApplication {
     }
 
 }
+
+// Main spring application starts

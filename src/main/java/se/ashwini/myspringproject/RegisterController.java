@@ -1,10 +1,10 @@
 package se.ashwini.myspringproject;
 
-import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.security.crypto.password.PasswordEncoder;//helps to encrypt password.
+import org.springframework.stereotype.Controller;// marks the class as controller in spring MVC application.
+import org.springframework.web.bind.annotation.PostMapping;// allow us to map POST request. used to submit form.
+import org.springframework.web.bind.annotation.RequestMapping; // allow us to map specif url.
+import org.springframework.web.bind.annotation.RequestParam; // to find specific path.
 import se.ashwini.myspringproject.model.ApplicationUser;
 import se.ashwini.myspringproject.repository.AppUserRepository;
 
@@ -25,15 +25,23 @@ public class RegisterController {
             @RequestParam("password") String password,
             @RequestParam("role") String role) {
 
+
         // saving new user
 
         String encodedPassword = passwordEncoder.encode(password);
-        ApplicationUser applicationUser = new ApplicationUser(username,encodedPassword,role);
+        ApplicationUser applicationUser = new ApplicationUser(username,role,encodedPassword);
         appUserRepository.save(applicationUser);
-        return "registerDone";
+        return "register_done";
 
 
     }
+    /**
+     * POSTMapping handles http Post request.
+     * captures the username,password,role.
+     * Encrypts the password using passwordEncoder.
+     * create a new user with name, role , password.
+     * saving new user in our database.
+     */
 }
 
 

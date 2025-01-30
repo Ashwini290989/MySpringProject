@@ -7,9 +7,9 @@
 <body>
 <h1>Manager Page</h1>
 <ul>
-    <!-- Corrected the syntax for iterating over 'managerInfoList' -->
+
     <li th:each="manager : ${managerInfoList}">
-        <!-- Corrected the way to access 'manager' properties -->
+
         <strong th:text="${manager.title}"></strong>: <span th:text="${manager.infoText}"></span>
     </li>
 </ul>

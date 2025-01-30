@@ -6,8 +6,8 @@ import java.util.ArrayList;
 import java.util.List;
 @Component
 public class AdminComponent {
-    public List<AdminDocument> getDocuments() {
-        List<AdminDocument> documents = new ArrayList<>();
+    public List<AdminDocument> getDocuments() { // method which returns a list of admin documents object.
+        List<AdminDocument> documents = new ArrayList<>(); //creates  empty list named document.
 
         // Create three instances of AdminDocument
         AdminDocument doc1 = new AdminDocument("Audit Trails", "Track user activities and changes made to the system");

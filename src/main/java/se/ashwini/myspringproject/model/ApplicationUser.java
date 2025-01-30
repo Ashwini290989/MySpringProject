@@ -1,21 +1,22 @@
 package se.ashwini.myspringproject.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.Column; // To Specify column in the database
+import jakarta.persistence.Entity; // represents table in the database
+import jakarta.persistence.GeneratedValue;// Tells the database to automatically generate value.
+import jakarta.persistence.Id;//This marks a specific field (like id) as the unique identifier for each row in the database.
 
 @Entity
 public class ApplicationUser {
     @Id
     @GeneratedValue
     private int id;
-@Column(nullable = false,unique = true)
+@Column(nullable = false,unique = true)// username column cannot be empty.Each value in the username column must be different.
     private String username;
+@Column(nullable = false)
     private String password;
     private String role;
 
-    public ApplicationUser() {
+    public ApplicationUser() {// when reading from a database, spring might need to instantiate  class without any arguments.
 
     }
 
@@ -56,3 +57,7 @@ public class ApplicationUser {
         this.password = password;
     }
 }
+/** constructors to create and initialize objects.
+ * getter methods to get values.
+ * setter methods to set new values.
+ */

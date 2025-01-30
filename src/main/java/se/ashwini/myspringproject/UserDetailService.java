@@ -13,10 +13,11 @@ import java.util.List;
 @Service
 public class UserDetailService implements UserDetailsService {
 
-    private final AppUserRepository appUserRepository;
+    private final AppUserRepository appUserRepository; //Dependency injection with constructors.
     public UserDetailService(AppUserRepository appUserRepository) {
         this.appUserRepository = appUserRepository;
     }
+
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         ApplicationUser applicationUser = appUserRepository.findByUsername(username);
@@ -35,6 +36,16 @@ public class UserDetailService implements UserDetailsService {
                 authorities
         );
     }
+    /**
+     * method loadUserByUsername()is overriding from userDetailsService. It takes username as a input.
+     * fetches an instance of application user,using the user name.
+     * if user not found, it will through an exception user not found.
+     * If the user is found, their role is retrieved and converted to a format Spring Security understands (ROLE_USER, ROLE_ADMIN).
+     * creating a list of user authorities,based on user role.
+     * SimpleGrantedAuthority class wraps each role into a format that Spring Security understands, like "ROLE_USER" or "ROLE_ADMIN".
+     * Creates a new instance of the User class from Spring Security, which implements UserDetails.
+     * finally, the user data is wrapped in a User object and returned for authentication.
+     */
 
 
 }

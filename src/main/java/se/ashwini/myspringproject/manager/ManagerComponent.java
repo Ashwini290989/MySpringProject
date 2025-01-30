@@ -7,8 +7,8 @@ import java.util.List;
 @Component
 public class ManagerComponent {
 
-    public List<ManagerInfo> getManagerInfo() {
-        List<ManagerInfo> managerInfoList= new ArrayList<>();
+    public List<ManagerInfo> getManagerInfo() { // create a method which returns list of ManagerINFO
+        List<ManagerInfo> managerInfoList= new ArrayList<>();// create a new empty list named managerInfoList
 
         // Create three instances of AdminDocument
         ManagerInfo info1 = new ManagerInfo("Team overview", "Detail overview of performance and task");
